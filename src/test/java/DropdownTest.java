@@ -11,18 +11,26 @@ public class DropdownTest extends BaseTest{
 
     void selectTest(){
 
+        //переходим на страницу
         driver.get("https://the-internet.herokuapp.com/dropdown");
 
+        //ищем эдемент по ид
         WebElement dropDownElement = driver.findElement(By.id("dropdown"));
 
+        //создаем объект класса Селект
         Select select = new Select(dropDownElement);
 
+        //получаем выбранную опцию как веб-элемент при помощи select. ....
         WebElement selectedOption = select.getFirstSelectedOption();
+        //получаем текущий текст, кладем в переменную
         String defaultSelectedText = selectedOption.getText();
+        //распечатать для наглядности что выбралось, (в тесте не нужно)
         System.out.println(defaultSelectedText);
 
         //сравниваем с ожидаемым результатом
+        //текст ожидаемого результата
         String expectedDefaultText = "Please select an option";
+        //сравниваем имеющийся и ожидаемый, еррор в случае несовпадения
         assertEquals(defaultSelectedText, expectedDefaultText, "error");
 
         //выбрать 1 опцию
